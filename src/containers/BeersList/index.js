@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 
 import * as shoppingBasketActions from '../../modules/shoppingBasket/actions'
+import * as beerActions from '../../modules/beers/actions'
 import Beer from '../../components/Beer'
 
 class BeersListContainer extends React.Component{
@@ -11,6 +12,12 @@ class BeersListContainer extends React.Component{
   }
   addToCart(beer) {
     this.props.addToCart(beer)
+  }
+  componentDidMount () {
+    const { beers, isFetching, loadMore, currentPage } = this.props
+    if (!beers.length && !isFetching) {
+      loadMore(currentPage)
+    }
   }
   render() {
     const { beers, itemsInCart } = this.props
@@ -39,11 +46,14 @@ class BeersListContainer extends React.Component{
 
 const mapStateToProps = state => ({
   beers: state.beers.beers,
+  isFetching: state.beers.isFetching,
+  currentPage: state.beers.nextPage,
   itemsInCart: state.basket.items,
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  addToCart: beer => dispatch(shoppingBasketActions.addItem(beer))
+  addToCart: beer => dispatch(shoppingBasketActions.addItem(beer)),
+  loadMore: (nextPageNumber) => dispatch(beerActions.fetchBeers(nextPageNumber)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(BeersListContainer)

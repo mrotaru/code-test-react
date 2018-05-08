@@ -14,13 +14,12 @@ class Home extends React.Component{
     this.props.loadMore(this.props.nextPageNumber)
   }
   render() {
-    const { beers } = this.props
     const fetching = this.props.isFetching ? 'true' : ''
     return (
     <div>
       <h1>Home</h1>
       <div>
-        <BeersList beers={beers} />
+        <BeersList />
       </div>
       <button onClick={this.loadMore} disabled={fetching}>Load More</button>
       {this.props.isFetching && <Spinner />}

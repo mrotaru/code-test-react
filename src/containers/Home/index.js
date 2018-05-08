@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 
 import * as beerActions from '../../modules/beers/actions'
-import BeersList from '../../components/BeersList'
+import BeersList from '../BeersList'
 
 class Home extends React.Component{
   constructor(props) {
@@ -27,7 +27,6 @@ class Home extends React.Component{
 }
 
 const mapStateToProps = state => ({
-  beers: state.beers.beers,
   nextPageNumber: state.beers.nextPage,
   fetching: state.fetching,
 })

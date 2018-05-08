@@ -1,7 +1,10 @@
 import React from 'react'
 
-const Beer = ({beer}) => <div>
-    <h5>{beer.name}</h5>
+const Beer = ({beer, addToCart}) => <div>
+    <span>{beer.name}</span>
+    <button onClick={() => {
+      addToCart(beer)
+    }}> + </button>
   </div>
 
 export default Beer

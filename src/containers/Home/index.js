@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import * as beerActions from '../../modules/beers/actions'
 import BeersList from '../BeersList'
+import Spinner from '../../components/Spinner'
 
 class Home extends React.Component{
   constructor(props) {
@@ -13,14 +14,16 @@ class Home extends React.Component{
     this.props.loadMore(this.props.nextPageNumber)
   }
   render() {
-    const { beers, fetching } = this.props
+    const { beers } = this.props
+    const fetching = this.props.isFetching ? 'true' : ''
     return (
     <div>
       <h1>Home</h1>
       <div>
         <BeersList beers={beers} />
       </div>
-      <button onClick={this.loadMore} enabled={!fetching}>Load More</button>
+      <button onClick={this.loadMore} disabled={fetching}>Load More</button>
+      {this.props.isFetching && <Spinner />}
     </div>
     )
   }
@@ -28,7 +31,7 @@ class Home extends React.Component{
 
 const mapStateToProps = state => ({
   nextPageNumber: state.beers.nextPage,
-  fetching: state.fetching,
+  isFetching: state.beers.isFetching,
 })
 
 const mapDispatchToProps = (dispatch) => ({

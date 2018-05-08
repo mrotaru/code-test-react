@@ -19,7 +19,7 @@ const fetchBeersFailure = (error) => ({
 export const fetchBeers = (pageNumber = 1) => 
   (dispatch, getState, { api }) => {
     dispatch(fetchBeersRequest())
-    return api.get('/beers', { page: pageNumber })
+    return api.get('/beers', { page: pageNumber, per_page: 10 })
       .then(res => res.json())
       .then(beers => dispatch(fetchBeersSuccess(beers)))
       .catch(error => dispatch(fetchBeersFailure(error)))

@@ -28,4 +28,4 @@ const mapStateToProps = state => ({
   error: state.beers.error,
 })
 
-export default connect(mapStateToProps, () => {})(App)
+export default connect(mapStateToProps)(App)

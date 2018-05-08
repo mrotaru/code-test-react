@@ -2,7 +2,6 @@ import * as actions from './actions'
 
 const initialState = {
   beers: [],
-  perPage: 25,
   nextPage: 1,
   fetching: false,
   error: null,

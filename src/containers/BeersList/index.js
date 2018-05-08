@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import * as beerActions from '../../modules/beers/actions'
 import * as shoppingBasketActions from '../../modules/shoppingBasket/actions'
 import BeersList from '../../components/BeersList'
+import Beer from '../../components/Beer'
 
 class BeersListContainer extends React.Component{
   constructor(props) {
@@ -14,13 +15,33 @@ class BeersListContainer extends React.Component{
     this.props.addToCart(beer)
   }
   render() {
-    const { beers } = this.props
-    return <BeersList beers={beers} addToCart={this.addToCart} />
+    const { beers, itemsInCart } = this.props
+    const inCart = new Map()
+    itemsInCart.forEach(item => {
+      if (inCart.has(item.id)) {
+        inCart.set(item.id, inCart.get(item.id) + 1)
+      } else {
+        inCart.set(item.id, 1)
+      }
+    });
+
+    return <div>
+      {beers.length
+        ? beers.map(beer => <Beer key={beer.id}
+            beer={beer}
+            addToCart={this.addToCart}
+            inCart={inCart.get(beer.id)}
+          />)
+        : <p>No beers...</p>
+      }
+      </div>
+
   }
 }
 
 const mapStateToProps = state => ({
   beers: state.beers.beers,
+  itemsInCart: state.basket.items,
 })
 
 const mapDispatchToProps = (dispatch) => ({

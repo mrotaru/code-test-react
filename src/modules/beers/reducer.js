@@ -9,7 +9,6 @@ const initialState = {
 }
 
 export default (state = initialState, action) => {
-  console.log('rrrred', action.error)
   switch(action.type) {
     case actions.FETCH_BEERS_REQUEST:
       return {

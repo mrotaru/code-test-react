@@ -3,6 +3,7 @@ import { routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import { createBrowserHistory } from 'history';
 import rootReducer from './modules';
+import fetch from 'unfetch'
 
 import Api from './api'
 const initialState = {};

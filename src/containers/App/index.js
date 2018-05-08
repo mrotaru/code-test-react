@@ -28,6 +28,4 @@ const mapStateToProps = state => ({
   error: state.beers.error,
 })
 
-const mapDispatchToProps = (dispatch) => ({})
-
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps, () => {})(App)

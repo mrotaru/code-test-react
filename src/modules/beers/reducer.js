@@ -14,6 +14,7 @@ export default (state = initialState, action) => {
     case actions.FETCH_BEERS_REQUEST:
       return {
         ...state,
+        error: null,
         isFetching: true,
       }
     case actions.FETCH_BEERS_FAILURE:

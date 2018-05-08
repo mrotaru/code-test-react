@@ -3,7 +3,7 @@ import * as actions from './actions'
 const initialState = {
   beers: [],
   perPage: 25,
-  currentPage: 1,
+  nextPage: 1,
   fetching: false,
   error: null,
 }
@@ -22,6 +22,7 @@ export default (state = initialState, action) => {
         ...state,
         error: null,
         isFetching: false,
+        nextPage: state.nextPage+1,
         beers: [
           ...state.beers,
           ...action.beers,

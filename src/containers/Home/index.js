@@ -10,7 +10,7 @@ class Home extends React.Component{
     this.loadMore = this.loadMore.bind(this)
   }
   loadMore() {
-    this.props.loadMore()
+    this.props.loadMore(this.props.nextPageNumber)
   }
   render() {
     const { beers, fetching } = this.props
@@ -28,11 +28,12 @@ class Home extends React.Component{
 
 const mapStateToProps = state => ({
   beers: state.beers.beers,
+  nextPageNumber: state.beers.nextPage,
   fetching: state.fetching,
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  loadMore: () => dispatch(beerActions.fetchBeers())
+  loadMore: (nextPageNumber) => dispatch(beerActions.fetchBeers(nextPageNumber))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

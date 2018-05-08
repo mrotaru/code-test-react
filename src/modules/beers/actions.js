@@ -16,10 +16,10 @@ const fetchBeersFailure = (error) => ({
   error,
 })
 
-export const fetchBeers = () => 
+export const fetchBeers = (pageNumber = 1) => 
   (dispatch, getState, { api }) => {
     dispatch(fetchBeersRequest())
-    return api.get('/beers')
+    return api.get('/beers', { page: pageNumber })
       .then(res => res.json())
       .then(beers => dispatch(fetchBeersSuccess(beers)))
       .catch(error => dispatch(fetchBeersFailure(error)))

@@ -1,9 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 
-import * as beerActions from '../../modules/beers/actions'
 import * as shoppingBasketActions from '../../modules/shoppingBasket/actions'
-import BeersList from '../../components/BeersList'
 import Beer from '../../components/Beer'
 
 class BeersListContainer extends React.Component{

@@ -19,7 +19,7 @@ const fetchBeersFailure = (error) => ({
 export const fetchBeers = () => 
   (dispatch, getState, { api }) => {
     dispatch(fetchBeersRequest())
-    return api.fetchFunction('https://api.punkapi.com/v2/beers')
+    return api.get('/beers')
       .then(res => res.json())
       .then(beers => dispatch(fetchBeersSuccess(beers)))
       .catch(error => dispatch(fetchBeersFailure(error)))

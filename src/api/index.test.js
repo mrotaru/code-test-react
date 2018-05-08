@@ -1,4 +1,4 @@
-const Api = require('./api').default
+const Api = require('.').default
 const sinon = require('sinon')
 
 describe('Api', () => {

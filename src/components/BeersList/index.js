@@ -1,5 +1,11 @@
+import React from 'react'
 import Beer from '../Beer'
 
-export const BeerList = beers => <div>
-  {beers.map(beer => <Beer key={beer.id} beer={beer} />)}
+const BeersList = beers => <div>
+  {beers.length
+    ? beers.map(beer => <Beer key={beer.id} beer={beer} />)
+    : <p>No beers...</p>
+  }
   </div>
+
+export default BeersList

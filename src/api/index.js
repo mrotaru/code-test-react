@@ -22,6 +22,7 @@ class Api {
         return result
       }).catch(error => {
         this.inProgress = false
+        console.log('ce', error)
         return Promise.reject(error)
       })
     return this.request

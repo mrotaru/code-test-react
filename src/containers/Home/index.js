@@ -27,7 +27,7 @@ class Home extends React.Component{
 }
 
 const mapStateToProps = state => ({
-  beers: state.beers,
+  beers: state.beers.beers,
   fetching: state.fetching,
 })
 

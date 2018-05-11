@@ -3,7 +3,7 @@ import * as actions from './actions'
 const initialState = {
   beers: [],
   nextPage: 1,
-  fetching: false,
+  isFetching: false,
   error: null,
 }
 
